@@ -1,0 +1,52 @@
+version: '2.4'
+
+networks:
+  matomo-net:
+    name: matomo-net
+services:
+  matomo-app:
+    networks:
+    - matomo-net
+    image: matomo:3.5-apache
+    restart: always
+    links:
+      - matomo-db
+    volumes:
+      - "./config:/var/www/html/config:rw"
+      - "./logs:/var/www/html/logs"
+    environment:
+      - "VIRTUAL_HOST=https://localhost:8443"
+    ports:
+      - "80:80"
+
+  matomo-db:
+    networks:
+    - matomo-net
+    image: mysql:5.7
+    volumes:
+      - "./matomo_db/:/var/lib/mysql"
+    environment:
+      - "MYSQL_DATABASE=matomo"
+      - "MYSQL_ROOT_PASSWORD=P@ssword1"
+      - "MYSQL_USER=matomo"
+      - "MYSQL_PASSWORD=P@ssword1"
+
+  apache-proxy:
+    networks:
+    - matomo-net
+    image: httpd:2.4.29
+    restart: always
+    environment:
+    - APACHE_PROXY_HOSTNAME=localhost
+    volumes:
+    - ./apache-proxy/httpd.conf:/usr/local/apache2/conf/httpd.conf
+    - ./apache-proxy/cert.crt:/etc/ssl/cbio_https/cert.crt
+    - ./apache-proxy/key.key:/etc/ssl/cbio_https/key.key
+    ports:
+    #- "80:80"
+    - "8443:8443"
+    #- "443:443"
+    depends_on:
+    - matomo-app
+    - matomo-db
+
