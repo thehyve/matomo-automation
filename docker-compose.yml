@@ -7,7 +7,7 @@ services:
   matomo-app:
     networks:
     - matomo-net
-    image: matomo:3.5-apache
+    image: matomo:3.9.1-apache
     restart: always
     links:
       - matomo-db
