@@ -30,7 +30,7 @@ For testing, create self-signed certificates by running this command:
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout key.key -out cert.crt -subj '/CN=localhost'
 ```
 
-And place them in the `apache-proxy-config/` folder.
+And place them in the `apache-proxy/` folder.
 For production, replace `cert.crt` and `key.key` by real certificates for the public URLs.
 
 ### Step 4 - Build and initialize containers
