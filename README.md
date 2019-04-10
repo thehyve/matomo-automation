@@ -17,13 +17,19 @@ git clone https://github.com/thehyve/matomo-docker.git
 
 See [https://docs.docker.com/compose/install/#install-compose](https://docs.docker.com/compose/install/#install-compose).
 
-### Step 2 - Change the address of the VIRTUAL_HOST
+### Step 2 - Configure the hostname
 
-Go to the `docker-compose.yml` file and change the `VIRTUAL_HOST` value (environment variable of the `matomo-app` container). Now it is set to `https://localhost:9443`, which works when testing locally, but change it to the appropriate host if you want to set up the application in a different place.
+Create a file named `.env`, to set the `SERVER_NAME` variable
+to the hostname as it will be accessed by the users' browsers.
+It defaults to `localhost`, which works when testing locally
+and accessing the app as `https://localhost:9443`,
+but set it to the appropriate host
+if you want to set up the application in a different place.
+```sh
+echo 'SERVER_NAME=www.example.org' >.env
+```
 
 ### Step 3 - Configure apache reverse HTTPS proxy
-
-Insert the hostname component of the URL (without `http://`) into `docker-compose.yml`, on the line that says `APACHE_PROXY_HOSTNAME=`.
 
 For testing, create self-signed certificates by running this command:
 ```

@@ -15,7 +15,7 @@ services:
       - "./config:/var/www/html/config:rw"
       - "./logs:/var/www/html/logs"
     environment:
-      - "VIRTUAL_HOST=https://localhost:9443"
+      - "VIRTUAL_HOST=https://${SERVER_NAME:-localhost}:9443"
 
   matomo-db:
     networks:
@@ -35,7 +35,7 @@ services:
     image: httpd:2.4.29
     restart: always
     environment:
-    - APACHE_PROXY_HOSTNAME=localhost
+    - APACHE_PROXY_HOSTNAME=${SERVER_NAME:-localhost}
     volumes:
     - ./apache-proxy/httpd.conf:/usr/local/apache2/conf/httpd.conf
     - ./apache-proxy/cert.crt:/etc/ssl/cbio_https/cert.crt
