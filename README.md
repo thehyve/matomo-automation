@@ -67,7 +67,15 @@ In your browser, go to the address specified in `VIRTUAL_HOST` (default: `https:
   and hit `Next`.
 - In Step 6, you are going to set up a Website to track. You can add more websites to track later. Once you have filled the fields, click `Next`.
 - In Step 7, you will see the JavaScript Tracking Code for the website you configured in Step 6. This piece of code is used to track what the users are doing in your website and report it to Matomo. Therefore, you must copy the code and paste it inside the `<header>` section of every page of your website. This JavaScript Tracking code can be customized to specifically track what you want or deal with different types of websites, more information can be found [here](https://developer.matomo.org/guides/tracking-javascript-guide). For customizing cBioPortal, check the section [Integration of Matomo with cBioPortal](#integration-of-matomo-with-cbioportal) below. Once you finished installing the JavaScript Tracking Code on your website, click `Next`.
-- Finally you will see a `Congratulations` page, click to `Continue to Matomo` to access the Matomo's log in page, where you should log in with your Super User credentials. This is the page you will see from now on every time you access Matomo via the address specified in `VIRTUAL_HOST` (default: `https://localhost:8443/`). If you see a warning message instead of the login page, you need to adjust the `config.init.php` file (explained in the following section: step 6).
+- At the end of the wizard you will see a `Congratulations` page. Click `Continue to Matomo` to access the Matomo's log in page, where you should log in with your Super User credentials. This is the page you will see from now on every time you access Matomo via the address specified in `VIRTUAL_HOST` (default: `https://localhost:8443/`). If you see a warning message instead of the login page, you need to adjust the `config.init.php` file (explained in the following section: step 6).
+
+Once logged in to the Matomo admin panel,
+head to the Administration icon in the top-right corner,
+and then to System > Geolocation in the left-hand menu.
+Enable the second option, GeoIP 2 (PHP).  
+This will still only roughly track users' locations,
+as the last two bytes of their IP addresses are anonymized
+by the default settings under Privacy > Anonymize data.
 
 ### Step 6 - Edit the config.init.php file
 Go to the folder `config`:
