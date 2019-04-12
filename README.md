@@ -38,7 +38,6 @@ For production, replace `cert.crt` and `key.key` by real certificates for the pu
 Do an initial build and start of the containers with:
 ```
 cd matomo-docker/
-docker-compose build
 docker-compose up -d
 ```
 
