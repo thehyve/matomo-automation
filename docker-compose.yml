@@ -16,8 +16,6 @@ services:
       - "./logs:/var/www/html/logs"
     environment:
       - "VIRTUAL_HOST=https://localhost:8443"
-    ports:
-      - "80:80"
 
   matomo-db:
     networks:
@@ -43,9 +41,7 @@ services:
     - ./apache-proxy/cert.crt:/etc/ssl/cbio_https/cert.crt
     - ./apache-proxy/key.key:/etc/ssl/cbio_https/key.key
     ports:
-    #- "80:80"
     - "8443:8443"
-    #- "443:443"
     depends_on:
     - matomo-app
     - matomo-db
