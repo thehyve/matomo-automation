@@ -72,7 +72,8 @@ In your browser, go to the address specified in `VIRTUAL_HOST` (default: `https:
 Once logged in to the Matomo admin panel,
 head to the Administration icon in the top-right corner,
 and then to System > Geolocation in the left-hand menu.
-Enable the second option, GeoIP 2 (PHP).  
+Enable the second option, **GeoIP 2 (PHP)**,
+and hit the **Save** button underneath the list of options.  
 This will still only roughly track users' locations,
 as the last two bytes of their IP addresses are anonymized
 by the default settings under Privacy > Anonymize data.
