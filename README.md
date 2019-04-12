@@ -19,7 +19,7 @@ See [https://docs.docker.com/compose/install/#install-compose](https://docs.dock
 
 ### Step 2 - Change the address of the VIRTUAL_HOST
 
-Go to the `docker-compose.yml` file and change the `VIRTUAL_HOST` value (environment variable of the `matomo-app` container). Now it is set to `https://localhost:8443`, which works when testing locally, but change it to the appropriate host if you want to set up the application in a different place.
+Go to the `docker-compose.yml` file and change the `VIRTUAL_HOST` value (environment variable of the `matomo-app` container). Now it is set to `https://localhost:9443`, which works when testing locally, but change it to the appropriate host if you want to set up the application in a different place.
 
 ### Step 3 - Configure apache reverse HTTPS proxy
 
@@ -46,7 +46,7 @@ docker-compose up -d
 
 ### Step 5 - Open the Matomo app and follow the installation steps
 
-In your browser, go to the address specified in `VIRTUAL_HOST` (default: `https://localhost:8443/`), and you will see the Matomo Welcome Screen. Follow the installation steps that are shown in the screen:
+In your browser, go to the address specified in `VIRTUAL_HOST` (default: `https://localhost:9443/`), and you will see the Matomo Welcome Screen. Follow the installation steps that are shown in the screen:
 - For Step 1 and Step 2 you don't need to change anything, just press `Next`.
 - In `Step 3: Database Setup`, change the values of the following parameters:
 
@@ -66,8 +66,18 @@ In your browser, go to the address specified in `VIRTUAL_HOST` (default: `https:
   sending anything to the address,
   and hit `Next`.
 - In Step 6, you are going to set up a Website to track. You can add more websites to track later. Once you have filled the fields, click `Next`.
-- In Step 7, you will see the JavaScript Tracking Code for the website you configured in Step 6. This piece of code is used to track what the users are doing in your website and report it to Matomo. Therefore, you must copy the code and paste it inside the `<header>` section of every page of your website. This JavaScript Tracking code can be customized to specifically track what you want or deal with different types of websites, more information can be found [here](https://developer.matomo.org/guides/tracking-javascript-guide). For customizing cBioPortal, check the section [Integration of Matomo with cBioPortal](#integration-of-matomo-with-cbioportal) below. For customizing Open Targets, check the section [Integration of Matomo with Open Targets](#integration-of-matomo-with-open-targets) below. Once you finished installing the JavaScript Tracking Code on your website, click `Next`.
-- At the end of the wizard you will see a `Congratulations` page. Click `Continue to Matomo` to access the Matomo's log in page, where you should log in with your Super User credentials. This is the page you will see from now on every time you access Matomo via the address specified in `VIRTUAL_HOST` (default: `https://localhost:8443/`). If you see a warning message instead of the login page, you need to adjust the `config.init.php` file (explained in the following section: step 6).
+- In Step 7, you will see the JavaScript Tracking Code for the website you configured in Step 6.
+  This piece of code is used to track what the users are doing in your website and report it to Matomo.
+  Therefore, you must copy the code and paste it inside the `<header>` section of every page of your website.
+  This JavaScript Tracking code can be customized to specifically track what you want or deal with
+  different types of websites, more information can be found [here](https://developer.matomo.org/guides/tracking-javascript-guide).
+  For customizing cBioPortal, check the section [Integration of Matomo with cBioPortal](#integration-of-matomo-with-cbioportal) below.
+  For customizing Open Targets, check the section [Integration of Matomo with Open Targets](#integration-of-matomo-with-open-targets)
+  below. Once you finished installing the JavaScript Tracking Code on your website, click `Next`.
+- At the end of the wizard you will see a `Congratulations` page. Click `Continue to Matomo` to access
+  the Matomo's log in page, where you should log in with your Super User credentials. This is the page you will
+  see from now on every time you access Matomo via the address specified in `VIRTUAL_HOST` (default: `https://localhost:9443/`).
+  If you see a warning message instead of the login page, you need to adjust the `config.init.php` file (explained in the following section: step 6).
 
 Once logged in to the Matomo admin panel,
 head to the Administration icon in the top-right corner,
@@ -90,7 +100,7 @@ trusted_hosts[] = "localhost"
 
 by this:
 ```
-trusted_hosts[] = "localhost:8443"
+trusted_hosts[] = "localhost:9443"
 ```
 
 ### All set
