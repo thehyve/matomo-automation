@@ -42,7 +42,10 @@ docker-compose build
 docker-compose up -d
 ```
 
-:warning: Three folders called `config`, `logs` and `matomo_db` will be created in your repository instance. If you want to start an installation from scratch later, you will need to remove them.
+WARNING: This will create folders named
+`matomo-config`, `matomo-logs` and `matomo-db`
+_next to_ the `matomo-automation/` folder.
+If you want to start an installation from scratch later, you will need to remove them.
 
 ### Step 5 - Open the Matomo app and follow the installation steps
 
