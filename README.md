@@ -21,10 +21,8 @@ See [https://docs.docker.com/compose/install/#install-compose](https://docs.dock
 
 Create a file named `.env`, to set the `SERVER_NAME` variable
 to the hostname as it will be accessed by the users' browsers.
-It defaults to `localhost`, which works when testing locally
-and accessing the app as `https://localhost:9443`,
-but set it to the appropriate host
-if you want to set up the application in a different place.
+For example, this would be `localhost`
+when accessing the app as `https://localhost:9443`.
 ```sh
 echo 'SERVER_NAME=www.example.org' >.env
 ```
