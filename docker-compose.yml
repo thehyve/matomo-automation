@@ -12,8 +12,8 @@ services:
     links:
       - matomo-db
     volumes:
-      - "./config:/var/www/html/config:rw"
-      - "./logs:/var/www/html/logs"
+      - "../matomo-config:/var/www/html/config"
+      - "../matomo-logs:/var/www/html/logs"
     environment:
       - "VIRTUAL_HOST=https://localhost:9443"
 
@@ -22,7 +22,7 @@ services:
     - matomo-net
     image: mysql:5.7
     volumes:
-      - "./matomo_db/:/var/lib/mysql"
+      - "../matomo-db/:/var/lib/mysql"
     environment:
       - "MYSQL_DATABASE=matomo"
       - "MYSQL_ROOT_PASSWORD=P@ssword1"
