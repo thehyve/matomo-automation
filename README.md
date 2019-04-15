@@ -21,8 +21,8 @@ See [https://docs.docker.com/compose/install/#install-compose](https://docs.dock
 
 Create a file named `.env`, to set the `SERVER_NAME` variable
 to the hostname as it will be accessed by the users' browsers.
-For example, this would be `localhost`
-when accessing the app as `https://localhost:9443`.
+For example, this would be `www.example.org`
+when accessing the Matomo dashboard as `https://www.example.org:9443`.
 ```sh
 echo 'SERVER_NAME=www.example.org' >.env
 ```
